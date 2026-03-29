@@ -1,8 +1,6 @@
-// frontend/src/components/LeaveDashboard.tsx
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import type { LeaveApplication, LeaveBalance } from '../types';
+import type { LeaveApplication, LeaveBalance } from '../../types';
 import LeaveApplicationForm from './LeaveApplicationForm';
 import LeaveHistory from './LeaveHistory';
 import LeaveBalanceCard from './LeaveBalanceCard';

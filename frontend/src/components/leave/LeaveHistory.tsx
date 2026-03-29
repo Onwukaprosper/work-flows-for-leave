@@ -1,7 +1,5 @@
-// frontend/src/components/LeaveHistory.tsx
-
 import React from 'react';
-import type { LeaveApplication } from '../types';
+import type { LeaveApplication } from '../../types';
 
 interface LeaveHistoryProps {
   applications: LeaveApplication[];

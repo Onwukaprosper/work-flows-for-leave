@@ -1,7 +1,5 @@
-// frontend/src/components/LeaveBalanceCard.tsx
-
 import React from 'react';
-import type { LeaveBalance } from '../types';
+import type { LeaveBalance } from '../../types';
 
 interface LeaveBalanceCardProps {
   balance: LeaveBalance;

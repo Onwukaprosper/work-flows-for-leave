@@ -1,0 +1,79 @@
+mouau-leave-system/
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── common/
+│   │   │   │   ├── Layout.tsx
+│   │   │   │   ├── Navbar.tsx
+│   │   │   │   └── Sidebar.tsx
+│   │   │   ├── auth/
+│   │   │   │   ├── Login.tsx
+│   │   │   │   └── ProtectedRoute.tsx
+│   │   │   ├── leave/
+│   │   │   │   ├── LeaveApplication.tsx
+│   │   │   │   ├── LeaveBalance.tsx
+│   │   │   │   ├── LeaveHistory.tsx
+│   │   │   │   ├── LeaveCalendar.tsx
+│   │   │   │   └── LeaveApproval.tsx
+│   │   │   ├── admin/
+│   │   │   │   ├── UserManagement.tsx
+│   │   │   │   ├── DepartmentManagement.tsx
+│   │   │   │   └── Reports.tsx
+│   │   │   └── notifications/
+│   │   │       └── NotificationCenter.tsx
+│   │   ├── hooks/
+│   │   │   ├── useAuth.ts
+│   │   │   ├── useLeave.ts
+│   │   │   └── useNotification.ts
+│   │   ├── services/
+│   │   │   ├── api.ts
+│   │   │   ├── authService.ts
+│   │   │   ├── leaveService.ts
+│   │   │   └── userService.ts
+│   │   ├── types/
+│   │   │   ├── user.ts
+│   │   │   ├── leave.ts
+│   │   │   └── api.ts
+│   │   ├── utils/
+│   │   │   ├── constants.ts
+│   │   │   ├── helpers.ts
+│   │   │   └── validators.ts
+│   │   ├── store/
+│   │   │   ├── authSlice.ts
+│   │   │   └── leaveSlice.ts
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── index.css
+│   ├── .env
+│   ├── .env.example
+│   ├── tailwind.config.js
+│   └── index.html
+├── backend/
+│   ├── config/
+│   │   ├── database.php
+│   │   ├── jwt.php
+│   │   └── mail.php
+│   ├── controllers/
+│   │   ├── AuthController.php
+│   │   ├── LeaveController.php
+│   │   ├── UserController.php
+│   │   └── ReportController.php
+│   ├── models/
+│   │   ├── User.php
+│   │   ├── Leave.php
+│   │   └── Notification.php
+│   ├── middleware/
+│   │   ├── auth.php
+│   │   └── cors.php
+│   ├── routes/
+│   │   └── api.php
+│   ├── uploads/
+│   └── .env
+└── database/
+    ├── migrations/
+    │   ├── 001_create_users.sql
+    │   ├── 002_create_leave_tables.sql
+    │   └── 003_create_notifications.sql
+    └── seeds/
+        └── seed_data.sql
+
