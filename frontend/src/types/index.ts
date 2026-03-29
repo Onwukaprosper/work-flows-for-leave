@@ -1,5 +1,3 @@
-// frontend/src/types/index.ts
-
 export interface User {
   id: number;
   staffId: string;

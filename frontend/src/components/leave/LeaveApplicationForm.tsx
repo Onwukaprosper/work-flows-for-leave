@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 // import { LeaveApplication } from '../types';
-import type { LeaveApplication } from '../types';
+import type { LeaveApplication } from '../../types';
 
 interface LeaveApplicationFormProps {
   userId: number;
