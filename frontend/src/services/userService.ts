@@ -56,6 +56,17 @@ export const userService = {
           role: 'hod',
           remainingLeaveDays: 20,
         },
+        {
+          id: 3,
+          staffId: 'MOUAU/SS/4496',
+          email: 'kalu.ngozi@mouau.edu.ng',
+          firstName: 'Ngozi Franklin',
+          lastName: 'Kalu',
+          department: 'DICT',
+          position: 'system analyst',
+          role: 'staff',
+          remainingLeaveDays: 30,
+        },
       ];
     }
   },

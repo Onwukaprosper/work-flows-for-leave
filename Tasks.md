@@ -35,9 +35,11 @@ Dark mode toggle
 
 Leave balance history tracking
 
-color scheme to match mouau
+color scheme to match mouau ✔
 
 removal of holiday dates  and weekends 
+
+Eligiblity status for leave (6 months old and above, cannot apply after October - ie Academic session)
 
 3. Deployment
 bash
