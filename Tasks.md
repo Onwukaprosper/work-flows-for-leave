@@ -35,6 +35,10 @@ Dark mode toggle
 
 Leave balance history tracking
 
+color scheme to match mouau
+
+removal of holiday dates  and weekends 
+
 3. Deployment
 bash
 # Build for production
