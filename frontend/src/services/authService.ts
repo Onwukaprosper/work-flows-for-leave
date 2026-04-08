@@ -53,7 +53,7 @@ export const authService = {
       lastName: "Chinedu",
       department: "Computer Science",
       position: "Lecturer",
-      role: "staff",
+      role: "admin", // staff | hod | hr | admin
       remainingLeaveDays: 14.5
     };
     

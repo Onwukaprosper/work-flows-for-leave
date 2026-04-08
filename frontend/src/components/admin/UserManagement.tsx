@@ -24,6 +24,62 @@ const UserManagement: React.FC = () => {
       setLoading(false);
     }
   };
+  ////////////////////////////////////////////////
+  // Add this right after the useState declarations in UserManagement.tsx
+useEffect(() => {
+  // Force mock data for testing
+  const mockUsersData = [
+    {
+      id: 1,
+      staffId: 'MOUAU001',
+      email: 'john.doe@mouau.edu.ng',
+      firstName: 'John',
+      lastName: 'Doe',
+      department: 'Computer Science',
+      position: 'Senior Lecturer',
+      role: 'staff' as const,
+      remainingLeaveDays: 14.5,
+    },
+    {
+      id: 2,
+      staffId: 'MOUAU002',
+      email: 'jane.smith@mouau.edu.ng',
+      firstName: 'Jane',
+      lastName: 'Smith',
+      department: 'Computer Science',
+      position: 'Head of Department',
+      role: 'hod' as const,
+      remainingLeaveDays: 20,
+    },
+    {
+      id: 3,
+      staffId: 'MOUAU003',
+      email: 'mary.johnson@mouau.edu.ng',
+      firstName: 'Mary',
+      lastName: 'Johnson',
+      department: 'Human Resources',
+      position: 'HR Manager',
+      role: 'hr' as const,
+      remainingLeaveDays: 22,
+    },
+    {
+      id: 4,
+      staffId: 'MOUAU004',
+      email: 'admin@mouau.edu.ng',
+      firstName: 'Admin',
+      lastName: 'User',
+      department: 'Administration',
+      position: 'System Administrator',
+      role: 'admin' as const,
+      remainingLeaveDays: 24,
+    },
+  ];
+  
+  setUsers(mockUsersData);
+  setLoading(false);
+}, []); // This will override the fetchUsers call
+
+  /////////////////////////////////////////////////
 
   const handleDeleteUser = async (userId: number) => {
     if (window.confirm('Are you sure you want to delete this user?')) {

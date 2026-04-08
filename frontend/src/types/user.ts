@@ -1,15 +1,3 @@
-// export interface User {
-//   id: number;
-//   staffId: string;
-//   email: string;
-//   firstName: string;
-//   lastName: string;
-//   department: string;
-//   position: string;
-//   role: 'staff' | 'hod' | 'hr' | 'admin';
-//   remainingLeaveDays: number;
-// }
-
 export type UserRole = 'staff' | 'hod' | 'hr' | 'admin';
 export interface User {
   id: number;
