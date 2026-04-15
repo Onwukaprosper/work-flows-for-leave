@@ -59,3 +59,18 @@ Test file uploads for sick/maternity leave
 Test notifications
 
 Moving forward we will now share these remaining tasks
+
+
+# Observation
+
+1. Why is the leave balance in Decimal
+2. What is work hour doing there
+3. Can we make "Reason for Leave" optional?
+4. What is Deparment Management doing in LMS
+note: any step that decline the leave, will crash the leave back to rejected state
+5. leave status should also active, on-going
+6. until you report back to duty, your leave status remains active which means you are still on leave. once the person is back, the hod role can restate the state of the leave to inactive | leave expired
+7. have a logic to allow users notify the hod dat they are back from leave
+8. feature a calendar from google API
+9. Did we integrate SMS/Email notification
+10. Can we integrate the calender in a way we can set the leave date by selecting the days on the calender
