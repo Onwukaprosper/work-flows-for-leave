@@ -66,7 +66,7 @@ const Reports: React.FC = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
       </div>
     );
   }
@@ -86,7 +86,7 @@ const Reports: React.FC = () => {
             <select
               value={reportType}
               onChange={(e) => setReportType(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="monthly">Monthly Report</option>
               <option value="quarterly">Quarterly Report</option>
@@ -100,7 +100,7 @@ const Reports: React.FC = () => {
               type="date"
               value={dateRange.start}
               onChange={(e) => setDateRange({ ...dateRange, start: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div>
@@ -109,11 +109,11 @@ const Reports: React.FC = () => {
               type="date"
               value={dateRange.end}
               onChange={(e) => setDateRange({ ...dateRange, end: e.target.value })}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             />
           </div>
           <div className="flex items-end gap-2">
-            <button className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+            <button className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
               Generate
             </button>
             <button
@@ -135,7 +135,7 @@ const Reports: React.FC = () => {
               <div className="text-2xl font-bold text-gray-900">105</div>
               <div className="text-sm text-gray-600 mt-1">Total Leave Applications</div>
             </div>
-            <CalendarIcon className="h-8 w-8 text-blue-500" />
+            <CalendarIcon className="h-8 w-8 text-green-500" />
           </div>
         </div>
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">

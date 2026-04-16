@@ -46,7 +46,7 @@ const LeaveCalendarView: React.FC = () => {
             </div>
             <div className={`text-sm font-medium p-2 rounded-lg ${
               date.toDateString() === new Date().toDateString()
-                ? 'bg-blue-100 text-blue-700'
+                ? 'bg-green-100 text-green-700'
                 : 'text-gray-700'
             }`}>
               {date.getDate()}

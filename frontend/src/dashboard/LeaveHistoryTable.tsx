@@ -84,7 +84,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves }) => {
             <option value="rejected">Rejected</option>
             <option value="cancelled">Cancelled</option>
           </select>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-700">
+          <button className="bg-green-600 text-white px-4 py-2 rounded-md text-sm hover:bg-green-700">
             SEARCH
           </button>
         </div>
@@ -161,7 +161,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves }) => {
         </div>
         <div className="flex gap-2">
           <button className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50">Previous</button>
-          <button className="px-3 py-1 bg-blue-600 text-white rounded-md text-sm">1</button>
+          <button className="px-3 py-1 bg-green-600 text-white rounded-md text-sm">1</button>
           <button className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50">2</button>
           <button className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50">3</button>
           <button className="px-3 py-1 border border-gray-300 rounded-md text-sm hover:bg-gray-50">Next</button>

@@ -24,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
               <Bars3Icon className="h-6 w-6" />
             </button>
             <div className="ml-4 flex-shrink-0 flex items-center">
-              <h1 className="text-xl font-bold text-blue-600">MOUAU Leave System</h1>
+              <h1 className="text-xl font-bold text-green-600">MOUAU Leave Management System</h1>
             </div>
           </div>
 

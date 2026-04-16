@@ -40,7 +40,7 @@ const ImportantNotices: React.FC = () => {
                   <p className="text-xs text-gray-500 mt-1">{notice.date}</p>
                 )}
                 {notice.action && (
-                  <button className="text-xs font-medium text-blue-600 hover:text-blue-700 mt-2">
+                  <button className="text-xs font-medium text-green-600 hover:text-green-700 mt-2">
                     {notice.action} →
                   </button>
                 )}

@@ -96,12 +96,12 @@ const LeaveApplication: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
           {/* Leave Balance Info */}
           {balance && (
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
               <div className="flex justify-between items-center">
-                <span className="text-sm font-medium text-blue-900">Available Leave Balance:</span>
-                <span className="text-2xl font-bold text-blue-700">{balance.remainingDays} days</span>
+                <span className="text-sm font-medium text-green-900">Available Leave Balance:</span>
+                <span className="text-2xl font-bold text-green-700">{balance.remainingDays} days</span>
               </div>
-              <div className="mt-2 text-xs text-blue-700">
+              <div className="mt-2 text-xs text-green-700">
                 Total: {balance.totalDays} days | Used: {balance.usedDays} days
               </div>
             </div>
@@ -115,7 +115,7 @@ const LeaveApplication: React.FC = () => {
             <select
               {...register('leaveTypeId', { valueAsNumber: true })}
               onChange={(e) => setSelectedType(parseInt(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value="">Select leave type</option>
               {leaveTypes.map(type => (
@@ -138,7 +138,7 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="date"
                 {...register('startDate')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 min={format(new Date(), 'yyyy-MM-dd')}
               />
               {errors.startDate && (
@@ -153,7 +153,7 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="date"
                 {...register('endDate')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                 min={startDate || format(new Date(), 'yyyy-MM-dd')}
                 onChange={() => calculateDays()}
               />
@@ -167,7 +167,7 @@ const LeaveApplication: React.FC = () => {
           {calculatedDays > 0 && (
             <div className="bg-gray-50 rounded-lg p-3">
               <span className="text-sm text-gray-600">Total Days:</span>
-              <span className="ml-2 text-lg font-semibold text-blue-600">{calculatedDays} days</span>
+              <span className="ml-2 text-lg font-semibold text-green-600">{calculatedDays} days</span>
             </div>
           )}
 
@@ -179,7 +179,7 @@ const LeaveApplication: React.FC = () => {
             <textarea
               {...register('reason')}
               rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
               placeholder="Please provide detailed reason for your leave..."
             />
             {errors.reason && (
@@ -197,7 +197,7 @@ const LeaveApplication: React.FC = () => {
                 <div className="space-y-1 text-center">
                   <DocumentArrowUpIcon className="mx-auto h-12 w-12 text-gray-400" />
                   <div className="flex text-sm text-gray-600">
-                    <label htmlFor="document" className="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500">
+                    <label htmlFor="document" className="relative cursor-pointer bg-white rounded-md font-medium text-green-600 hover:text-green-500">
                       <span>Upload a file</span>
                       <input
                         id="document"
@@ -227,7 +227,7 @@ const LeaveApplication: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50"
+              className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 disabled:opacity-50"
             >
               {loading ? 'Submitting...' : 'Submit Application'}
             </button>

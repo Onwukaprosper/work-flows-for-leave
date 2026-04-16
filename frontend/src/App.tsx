@@ -23,7 +23,7 @@
 //         <LeaveProvider>
 //           <Suspense fallback={
 //             <div className="flex justify-center items-center h-screen">
-//               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+//               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
 //             </div>
 //           }>
 //             <Routes>
@@ -87,7 +87,7 @@ function App() {
         <LeaveProvider>
           <Suspense fallback={
             <div className="flex justify-center items-center h-screen">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
             </div>
           }>
             <Routes>

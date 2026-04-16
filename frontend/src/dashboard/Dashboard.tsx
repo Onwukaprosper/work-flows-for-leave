@@ -57,7 +57,7 @@ const Dashboard: React.FC = () => {
         <StatCard
           title="Leave(s) Allowed"
           value={stats.leavesAllowed}
-          icon={<DocumentTextIcon className="h-8 w-8 text-blue-500" />}
+          icon={<DocumentTextIcon className="h-8 w-8 text-green-500" />}
           color="blue"
         />
         <StatCard

@@ -38,7 +38,7 @@ const LeaveApproval: React.FC = () => {
               </div>
               <span className={`px-2 py-1 rounded-full text-xs font-medium ${
                 leave.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                leave.status === 'hod_approved' ? 'bg-blue-100 text-blue-800' : 'bg-gray-100 text-gray-800'
+                leave.status === 'hod_approved' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'
               }`}>
                 {leave.status.replace('_', ' ').toUpperCase()}
               </span>
@@ -79,7 +79,7 @@ const LeaveApproval: React.FC = () => {
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Add any comments or remarks..."
                 />
               </div>
@@ -115,7 +115,7 @@ const LeaveApproval: React.FC = () => {
                 <>
                   <button
                     onClick={() => setSelectedLeave(leave.id)}
-                    className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                    className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
                   >
                     Review Application
                   </button>

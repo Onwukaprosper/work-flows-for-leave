@@ -45,7 +45,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
       approved: 'bg-green-100 text-green-800',
       rejected: 'bg-red-100 text-red-800',
       cancelled: 'bg-gray-100 text-gray-800',
-      hod_approved: 'bg-blue-100 text-blue-800',
+      hod_approved: 'bg-green-100 text-green-800',
       hr_approved: 'bg-purple-100 text-purple-800'
     };
     return styles[status] || styles.pending;
@@ -94,7 +94,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
             <label className="block text-xs font-medium text-gray-500 mb-1">DATE FROM</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               value={filters.dateFrom}
               onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
             />
@@ -103,7 +103,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
             <label className="block text-xs font-medium text-gray-500 mb-1">DATE TO</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               value={filters.dateTo}
               onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
             />
@@ -111,7 +111,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">LEAVE TYPE</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               value={filters.leaveType}
               onChange={(e) => setFilters({ ...filters, leaveType: e.target.value })}
             >
@@ -128,7 +128,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">STATUS</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
             >
@@ -144,7 +144,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
           <div className="flex items-end gap-2">
             <button
               onClick={handleSearch}
-              className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700"
+              className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md text-sm hover:bg-green-700"
             >
               SEARCH
             </button>
@@ -236,7 +236,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
                           </div>
                         )}
                         <div className="pt-2">
-                          <button className="text-blue-600 hover:text-blue-700 text-sm flex items-center gap-1">
+                          <button className="text-green-600 hover:text-green-700 text-sm flex items-center gap-1">
                             <DocumentTextIcon className="h-4 w-4" />
                             View Document
                           </button>
@@ -270,7 +270,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
                 setItemsPerPage(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="border border-gray-300 rounded-md text-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="border border-gray-300 rounded-md text-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-500"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>
@@ -307,7 +307,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
                   onClick={() => setCurrentPage(pageNum)}
                   className={`px-3 py-1 rounded-md text-sm ${
                     currentPage === pageNum
-                      ? 'bg-blue-600 text-white'
+                      ? 'bg-green-600 text-white'
                       : 'border border-gray-300 hover:bg-gray-50'
                   }`}
                 >

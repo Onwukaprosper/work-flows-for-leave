@@ -33,9 +33,9 @@ const WorkHoursChart: React.FC<WorkHoursChartProps> = ({ data }) => {
           <div key={day.key} className="flex items-center">
             <span className="w-12 text-sm text-gray-600">{day.label}</span>
             <div className="flex-1 mx-3">
-              <div className="h-8 bg-blue-100 rounded-full overflow-hidden">
+              <div className="h-8 bg-green-100 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-blue-500 rounded-full flex items-center justify-end px-3 text-xs text-white font-medium"
+                  className="h-full bg-green-500 rounded-full flex items-center justify-end px-3 text-xs text-white font-medium"
                   style={{ width: `${(data[day.key as keyof typeof data] / maxHours) * 100}%` }}
                 >
                   {data[day.key as keyof typeof data]}h

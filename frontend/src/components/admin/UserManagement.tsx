@@ -96,7 +96,7 @@ useEffect(() => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div>
       </div>
     );
   }
@@ -110,7 +110,7 @@ useEffect(() => {
         </div>
         <button
           onClick={() => setShowModal(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 flex items-center gap-2"
+          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center gap-2"
         >
           <PlusIcon className="h-5 w-5" />
           Add User
@@ -156,7 +156,7 @@ useEffect(() => {
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`px-2 py-1 text-xs font-medium rounded-full ${
                     user.role === 'admin' ? 'bg-purple-100 text-purple-800' :
-                    user.role === 'hod' ? 'bg-blue-100 text-blue-800' :
+                    user.role === 'hod' ? 'bg-green-100 text-green-800' :
                     user.role === 'hr' ? 'bg-green-100 text-green-800' :
                     'bg-gray-100 text-gray-800'
                   }`}>
@@ -169,7 +169,7 @@ useEffect(() => {
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
                     onClick={() => setEditingUser(user)}
-                    className="text-blue-600 hover:text-blue-900 mr-3"
+                    className="text-green-600 hover:text-green-900 mr-3"
                   >
                     <PencilIcon className="h-5 w-5" />
                   </button>

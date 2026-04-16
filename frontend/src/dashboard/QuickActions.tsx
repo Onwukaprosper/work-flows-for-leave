@@ -9,13 +9,13 @@ const QuickActions: React.FC = () => {
       <div className="space-y-3">
         <Link
           to="/leave/apply"
-          className="flex items-center justify-between p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
+          className="flex items-center justify-between p-3 bg-green-50 rounded-lg hover:bg-green-100 transition-colors"
         >
           <div className="flex items-center gap-3">
-            <CalendarIcon className="h-5 w-5 text-blue-600" />
-            <span className="text-sm font-medium text-blue-700">Apply Leave</span>
+            <CalendarIcon className="h-5 w-5 text-green-600" />
+            <span className="text-sm font-medium text-green-700">Apply Leave</span>
           </div>
-          <span className="text-xs text-blue-600">→</span>
+          <span className="text-xs text-green-600">→</span>
         </Link>
         
         <Link

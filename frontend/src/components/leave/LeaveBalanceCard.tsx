@@ -7,7 +7,7 @@ interface LeaveBalanceCardProps {
 
 const LeaveBalanceCard: React.FC<LeaveBalanceCardProps> = ({ balance }) => {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg shadow-lg p-6 mb-8 text-white">
+    <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg shadow-lg p-6 mb-8 text-white">
       <h3 className="text-lg font-semibold mb-4">Leave Balance</h3>
       <div className="grid grid-cols-3 gap-4">
         <div className="text-center">

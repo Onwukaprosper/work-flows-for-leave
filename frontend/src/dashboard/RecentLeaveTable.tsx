@@ -99,7 +99,7 @@ const RecentLeaveTable: React.FC<RecentLeaveTableProps> = ({ leaves, onViewAll }
         <div className="px-6 py-3 border-t border-gray-200 bg-gray-50">
           <button
             onClick={onViewAll}
-            className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+            className="text-sm text-green-600 hover:text-green-700 font-medium"
           >
             View all applications →
           </button>

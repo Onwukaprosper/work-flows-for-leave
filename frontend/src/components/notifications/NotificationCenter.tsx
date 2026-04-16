@@ -23,7 +23,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
       case 'pending':
         return <ClockIcon className="h-5 w-5 text-yellow-500" />;
       default:
-        return <BellIcon className="h-5 w-5 text-blue-500" />;
+        return <BellIcon className="h-5 w-5 text-green-500" />;
     }
   };
 
@@ -52,7 +52,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
           {unreadCount > 0 && (
             <button
               onClick={markAllAsRead}
-              className="text-xs text-blue-600 hover:text-blue-700"
+              className="text-xs text-green-600 hover:text-green-700"
             >
               Mark all read
             </button>
@@ -71,7 +71,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
           onClick={() => setFilter('all')}
           className={`px-3 py-1 text-sm rounded-md ${
             filter === 'all'
-              ? 'bg-blue-100 text-blue-700'
+              ? 'bg-green-100 text-green-700'
               : 'text-gray-600 hover:bg-gray-100'
           }`}
         >
@@ -81,7 +81,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
           onClick={() => setFilter('unread')}
           className={`px-3 py-1 text-sm rounded-md ${
             filter === 'unread'
-              ? 'bg-blue-100 text-blue-700'
+              ? 'bg-green-100 text-green-700'
               : 'text-gray-600 hover:bg-gray-100'
           }`}
         >
@@ -102,7 +102,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
               <div
                 key={notification.id}
                 className={`p-4 hover:bg-gray-50 cursor-pointer transition-colors ${
-                  !notification.isRead ? 'bg-blue-50' : ''
+                  !notification.isRead ? 'bg-green-50' : ''
                 }`}
                 onClick={() => markAsRead(notification.id)}
               >
@@ -139,7 +139,7 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({ onClose }) => {
 
       {/* Footer */}
       <div className="p-3 border-t border-gray-200 bg-gray-50">
-        <button className="text-xs text-blue-600 hover:text-blue-700 w-full text-center">
+        <button className="text-xs text-green-600 hover:text-green-700 w-full text-center">
           View all notifications
         </button>
       </div>

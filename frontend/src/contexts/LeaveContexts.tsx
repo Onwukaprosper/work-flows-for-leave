@@ -109,7 +109,7 @@ export const LeaveProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         applyForLeave,
         approveLeave,
         rejectLeave,
-        refreshLeaves,
+        refreshLeaves
       }}
     >
       {children}

@@ -71,7 +71,7 @@ const LeaveApplicationForm: React.FC<LeaveApplicationFormProps> = ({ userId, onS
           <select
             value={formData.leaveTypeId}
             onChange={(e) => setFormData({ ...formData, leaveTypeId: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           >
             <option value="">Select leave type</option>
@@ -89,7 +89,7 @@ const LeaveApplicationForm: React.FC<LeaveApplicationFormProps> = ({ userId, onS
             type="date"
             value={formData.startDate}
             onChange={(e) => setFormData({ ...formData, startDate: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
         </div>
@@ -102,7 +102,7 @@ const LeaveApplicationForm: React.FC<LeaveApplicationFormProps> = ({ userId, onS
             type="date"
             value={formData.endDate}
             onChange={(e) => setFormData({ ...formData, endDate: e.target.value })}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
         </div>
@@ -115,7 +115,7 @@ const LeaveApplicationForm: React.FC<LeaveApplicationFormProps> = ({ userId, onS
             value={formData.reason}
             onChange={(e) => setFormData({ ...formData, reason: e.target.value })}
             rows={4}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
             required
           />
         </div>
@@ -123,7 +123,7 @@ const LeaveApplicationForm: React.FC<LeaveApplicationFormProps> = ({ userId, onS
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+          className="w-full bg-green-600 text-white font-bold py-2 px-4 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 disabled:opacity-50"
         >
           {loading ? 'Submitting...' : 'Submit Application'}
         </button>
