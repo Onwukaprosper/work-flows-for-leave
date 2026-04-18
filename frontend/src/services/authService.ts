@@ -54,7 +54,7 @@ export const authService = {
       department: "Computer Science",
       position: "Lecturer",
       role: "admin", // staff | hod | hr | admin
-      remainingLeaveDays: 14.5
+      remainingLeaveDays: 30
     };
     
     localStorage.setItem('token', 'mock-token');

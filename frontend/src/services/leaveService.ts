@@ -93,8 +93,8 @@ export const leaveService = {
   getLeaveBalance: async (userId: number) => {
     return {
       totalDays: 24,
-      usedDays: 9.5,
-      remainingDays: 14.5
+      usedDays: 10,
+      remainingDays: 14
     };
   },
 
@@ -103,8 +103,8 @@ export const leaveService = {
       {
         id: 3,
         user: {
-          firstName: "Jane",
-          lastName: "Smith",
+          firstName: "Chidinma",
+          lastName: "Jane",
           department: "Mathematics",
           position: "Senior Lecturer"
         },

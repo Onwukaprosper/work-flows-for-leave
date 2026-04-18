@@ -13,15 +13,15 @@ const ImportantNotices: React.FC = () => {
     {
       type: 'info',
       icon: ClockIcon,
-      message: '2 Compensatory off will expires on 5 Mar 2021',
+      message: '2 Compensatory off will expires on 5 May 2026',
       action: null,
       color: 'blue'
     },
     {
       type: 'holiday',
       icon: GiftIcon,
-      message: 'Next Holiday: Holi',
-      date: '29 Mar 2021',
+      message: 'Next Holiday: Holiday',
+      date: '29 Mar 2027',
       color: 'green'
     }
   ];

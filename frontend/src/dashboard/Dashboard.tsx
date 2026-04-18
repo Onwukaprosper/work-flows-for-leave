@@ -20,16 +20,16 @@ interface DashboardStats {
 const Dashboard: React.FC = () => {
   const [dateRange, setDateRange] = useState({ from: '', to: '' });
   
-  // Mock data - replace with API calls
+  // Mock data - we will replace this with API calls
   const stats: DashboardStats = {
-    leavesAllowed: 20.00,
-    availableLeave: 14.50,
-    leavesTaken: 6.50,
-    balanceLeave: 8.00
+    leavesAllowed: 20,
+    availableLeave: 14,
+    leavesTaken: 6,
+    balanceLeave: 8
   };
 
   const workHours = {
-    mon: 6.6,
+    mon: 6,
     tue: 13,
     wed: 15,
     thu: 14,
@@ -83,9 +83,9 @@ const Dashboard: React.FC = () => {
       {/* Work Hours and Chart Section */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
         <div className="lg:col-span-1">
-          <WorkHoursChart data={workHours} />
+          {/* <WorkHoursChart data={workHours} /> */}
         </div>
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-3">
           <LeaveCalendarView />
         </div>
       </div>

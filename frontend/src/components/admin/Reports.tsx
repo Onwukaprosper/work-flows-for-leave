@@ -61,6 +61,7 @@ const Reports: React.FC = () => {
   const handleExport = (format: 'pdf' | 'excel') => {
     toast.success(`Exporting as ${format.toUpperCase()}...`);
     // Implement actual export logic here
+    toast.error('Export failed. Please try again.');
   };
 
   if (loading) {

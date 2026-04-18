@@ -41,7 +41,7 @@ export const useNotifications = () => {
           id: 3,
           userId: 1,
           title: 'Leave Balance Update',
-          message: 'Your leave balance has been updated. You have 14.5 days remaining.',
+          message: 'Your leave balance has been updated. You have 14 days remaining.',
           type: 'info',
           isRead: true,
           createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),

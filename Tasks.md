@@ -63,7 +63,7 @@ Moving forward we will now share these remaining tasks
 
 # Observation
 
-1. Why is the leave balance in Decimal
+1. Why is the leave balance in Decimal .
 2. What is work hour doing there
 3. Can we make "Reason for Leave" optional?
 4. What is Deparment Management doing in LMS
