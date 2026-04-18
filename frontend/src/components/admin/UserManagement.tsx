@@ -12,58 +12,58 @@ const UserManagement: React.FC = () => {
 
   //////////////////////////////////////////////////////
 
-// useEffect(() => {
-//   // Force mock data for testing
-//   const mockUsersData = [
-//     {
-//       id: 1,
-//       staffId: 'MOUAU001',
-//       email: 'john.doe@mouau.edu.ng',
-//       firstName: 'John',
-//       lastName: 'Doe',
-//       department: 'Computer Science',
-//       position: 'Senior Lecturer',
-//       role: 'staff' as const,
-//       remainingLeaveDays: 14,
-//     },
-//     {
-//       id: 2,
-//       staffId: 'MOUAU002',
-//       email: 'jane.smith@mouau.edu.ng',
-//       firstName: 'Jane',
-//       lastName: 'Smith',
-//       department: 'Computer Science',
-//       position: 'Head of Department',
-//       role: 'hod' as const,
-//       remainingLeaveDays: 20,
-//     },
-//     {
-//       id: 3,
-//       staffId: 'MOUAU003',
-//       email: 'mary.johnson@mouau.edu.ng',
-//       firstName: 'Mary',
-//       lastName: 'Johnson',
-//       department: 'Human Resources',
-//       position: 'HR Manager',
-//       role: 'hr' as const,
-//       remainingLeaveDays: 22,
-//     },
-//     {
-//       id: 4,
-//       staffId: 'MOUAU004',
-//       email: 'admin@mouau.edu.ng',
-//       firstName: 'Admin',
-//       lastName: 'User',
-//       department: 'Administration',
-//       position: 'System Administrator',
-//       role: 'admin' as const,
-//       remainingLeaveDays: 24,
-//     },
-//   ];
+useEffect(() => {
+  // Force mock data for testing
+  const mockUsersData = [
+    {
+      id: 1,
+      staffId: 'MOUAU001',
+      email: 'john.doe@mouau.edu.ng',
+      firstName: 'John',
+      lastName: 'Doe',
+      department: 'Computer Science',
+      position: 'Senior Lecturer',
+      role: 'staff' as const,
+      remainingLeaveDays: 14,
+    },
+    {
+      id: 2,
+      staffId: 'MOUAU002',
+      email: 'jane.smith@mouau.edu.ng',
+      firstName: 'Jane',
+      lastName: 'Smith',
+      department: 'Computer Science',
+      position: 'Head of Department',
+      role: 'hod' as const,
+      remainingLeaveDays: 20,
+    },
+    {
+      id: 3,
+      staffId: 'MOUAU003',
+      email: 'mary.johnson@mouau.edu.ng',
+      firstName: 'Mary',
+      lastName: 'Johnson',
+      department: 'Human Resources',
+      position: 'HR Manager',
+      role: 'hr' as const,
+      remainingLeaveDays: 22,
+    },
+    {
+      id: 4,
+      staffId: 'MOUAU004',
+      email: 'admin@mouau.edu.ng',
+      firstName: 'Admin',
+      lastName: 'User',
+      department: 'Administration',
+      position: 'System Administrator',
+      role: 'admin' as const,
+      remainingLeaveDays: 24,
+    },
+  ];
   
-//   setUsers(mockUsersData);
-//   setLoading(false);
-// }, []); // This will override the fetchUsers call
+  setUsers(mockUsersData);
+  setLoading(false);
+}, []); // This will override the fetchUsers call
 
 
   ///////////////////////////////////////////////////////
@@ -81,6 +81,17 @@ const UserManagement: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleEdit = (user: User) => {
+    setEditingUser(user);
+    // setFormData({
+    //   name: user.firstName,
+    //   id: user.id.toString(),
+    //   staffId: user.staffId,
+    //   email: user.email,
+    // });
+    setShowModal(true);
   };
 
   const handleDeleteUser = async (userId: number) => {
@@ -170,7 +181,7 @@ const UserManagement: React.FC = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
-                    onClick={() => setEditingUser(user)}
+                    onClick={() => handleEdit(user)}
                     className="text-green-600 hover:text-green-900 mr-3"
                   >
                     <PencilIcon className="h-5 w-5" />
