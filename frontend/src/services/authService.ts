@@ -44,16 +44,30 @@ export interface User {
 // ///////////////    Add mock mode |||||||||||||| ////////
 export const authService = {
   login: async (credentials: LoginCredentials) => {
-    // Mock login - accept any credentials
+    // Dynamically assign role based on email for testing UI views
+    let userRole = 'staff';
+    const lowerEmail = credentials.email.toLowerCase();
+    
+    if (lowerEmail.includes('hod')) userRole = 'hod';
+    else if (lowerEmail.includes('hr') || lowerEmail.includes('registrar')) userRole = 'hr';
+    else if (lowerEmail.includes('bursar')) userRole = 'bursar';
+    else if (lowerEmail.includes('vc')) userRole = 'vc';
+    else if (lowerEmail.includes('admin')) userRole = 'admin';
+    else if (lowerEmail.includes('dean')) userRole = 'dean'; // Just in case
+
     const mockUser = {
       id: 1,
       staffId: "MOUAU001",
       email: credentials.email,
-      firstName: "Abel",
-      lastName: "Chinedu",
+      firstName: "Test",
+      lastName: userRole.toUpperCase(),
       department: "Computer Science",
+      presentPost: "Senior Lecturer",
+      salaryScale: "CONUASS",
+      salaryGrade: "05",
+      salaryStep: 2,
       position: "Lecturer",
-      role: "admin", // staff | hod | hr | admin
+      role: userRole, 
       remainingLeaveDays: 30
     };
     
