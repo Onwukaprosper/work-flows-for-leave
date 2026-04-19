@@ -9,6 +9,11 @@ import { DocumentArrowUpIcon } from '@heroicons/react/24/outline';
 
 const leaveSchema = z.object({
   leaveTypeId: z.number().min(1, 'Leave type is required'),
+  collegeDeptUnit: z.string().min(1, 'College/Dept/Unit is required'),
+  presentPost: z.string().min(1, 'Present Post is required'),
+  salaryScale: z.string().optional(),
+  salaryGrade: z.string().optional(),
+  salaryStep: z.number().optional(),
   academicSession: z.string().min(1, 'Academic session is required'),
   startDate: z.string().min(1, 'Start date is required'),
   endDate: z.string().min(1, 'End date is required'),
@@ -49,6 +54,15 @@ const LeaveApplication: React.FC = () => {
     setValue,
   } = useForm<LeaveFormData>({
     resolver: zodResolver(leaveSchema),
+    defaultValues: {
+      collegeDeptUnit: user?.department || '',
+      presentPost: user?.presentPost || user?.position || '',
+      salaryScale: user?.salaryScale || '',
+      salaryGrade: user?.salaryGrade || '',
+      salaryStep: user?.salaryStep || undefined,
+      deferredDaysBroughtForward: 0,
+      leaveGrantRequested: false
+    }
   });
 
   const startDate = watch('startDate');
@@ -112,6 +126,11 @@ const LeaveApplication: React.FC = () => {
 
     const formData = new FormData();
     formData.append('leaveTypeId', data.leaveTypeId.toString());
+    formData.append('collegeDeptUnit', data.collegeDeptUnit || '');
+    formData.append('presentPost', data.presentPost || '');
+    formData.append('salaryScale', data.salaryScale || '');
+    formData.append('salaryGrade', data.salaryGrade || '');
+    if (data.salaryStep) formData.append('salaryStep', data.salaryStep.toString());
     formData.append('academicSession', data.academicSession || '');
     formData.append('startDate', data.startDate);
     formData.append('endDate', data.endDate);
@@ -148,21 +167,52 @@ const LeaveApplication: React.FC = () => {
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
-          {/* User Profile Summary */}
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 grid grid-cols-2 gap-4">
+          {/* Employee Details Inputs */}
+          <div className="grid grid-cols-2 gap-4">
             <div>
-              <span className="block text-xs font-semibold text-blue-800 uppercase">Employee Details</span>
-              <p className="text-sm font-medium text-blue-900 mt-1">{user?.firstName} {user?.lastName}</p>
-              <p className="text-xs text-blue-700">{user?.department}</p>
+              <label className="block text-sm font-medium text-gray-700 mb-2">College/Dept/Unit *</label>
+              <input
+                type="text"
+                {...register('collegeDeptUnit')}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+              {errors.collegeDeptUnit && <p className="mt-1 text-sm text-red-600">{errors.collegeDeptUnit.message}</p>}
             </div>
             <div>
-              <span className="block text-xs font-semibold text-blue-800 uppercase">Position & Grade</span>
-              <p className="text-sm font-medium text-blue-900 mt-1">{user?.presentPost || user?.position || 'Not specified'}</p>
-              <p className="text-xs text-blue-700">
-                {user?.salaryScale ? `${user.salaryScale} ` : ''} 
-                {user?.salaryGrade ? `Grade ${user.salaryGrade} ` : ''}
-                {user?.salaryStep ? `Step ${user.salaryStep}` : ''}
-              </p>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Present Post *</label>
+              <input
+                type="text"
+                {...register('presentPost')}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+              {errors.presentPost && <p className="mt-1 text-sm text-red-600">{errors.presentPost.message}</p>}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Salary Scale (e.g. CONTISS)</label>
+              <input
+                type="text"
+                {...register('salaryScale')}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Grade/Level</label>
+              <input
+                type="text"
+                {...register('salaryGrade')}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Step</label>
+              <input
+                type="number"
+                {...register('salaryStep', { valueAsNumber: true })}
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              />
             </div>
           </div>
 

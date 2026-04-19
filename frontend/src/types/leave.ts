@@ -43,6 +43,11 @@ export interface LeaveApplication {
   startDate: string;
   endDate: string;
   totalDays: number;
+  collegeDeptUnit?: string;
+  presentPost?: string;
+  salaryScale?: string;
+  salaryGrade?: string;
+  salaryStep?: number;
   academicSession?: string;
   deferredDaysBroughtForward?: number;
   reasonForDeferment?: string;
@@ -81,6 +86,11 @@ export interface LeaveApplicationFormData {
   leaveTypeId: number;
   startDate: string;
   endDate: string;
+  collegeDeptUnit?: string;
+  presentPost?: string;
+  salaryScale?: string;
+  salaryGrade?: string;
+  salaryStep?: number;
   academicSession?: string;
   addressOnLeave?: string;
   deferredDaysBroughtForward?: number;
