@@ -8,7 +8,12 @@ CREATE TABLE users (
     last_name VARCHAR(50) NOT NULL,
     department VARCHAR(100),
     position VARCHAR(100),
-    role VARCHAR(20) DEFAULT 'staff', -- staff, hod, hr, admin
+    present_post VARCHAR(100),
+    salary_scale VARCHAR(50),
+    salary_grade VARCHAR(10),
+    salary_step INTEGER,
+    date_of_appointment DATE,
+    role VARCHAR(20) DEFAULT 'staff', -- staff, hod, vc, hr, bursar, admin
     annual_leave_days INTEGER DEFAULT 24,
     remaining_leave_days INTEGER DEFAULT 24,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -33,15 +38,26 @@ CREATE TABLE leave_applications (
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     total_days INTEGER NOT NULL,
+    academic_session VARCHAR(20),
+    deferred_days_brought_forward INTEGER DEFAULT 0,
+    reason_for_deferment TEXT,
+    address_on_leave TEXT,
+    expected_resumption_date DATE,
+    leave_grant_requested BOOLEAN DEFAULT FALSE,
+    registrar_granted_days INTEGER,
     reason TEXT,
     document_path VARCHAR(255),
-    status VARCHAR(20) DEFAULT 'pending', -- pending, hod_approved, hr_approved, approved, rejected, cancelled
+    status VARCHAR(20) DEFAULT 'pending', -- pending, hod_approved, vc_approved, hr_approved, bursar_approved, approved, rejected, cancelled
     hod_comment TEXT,
+    vc_comment TEXT,
     hr_comment TEXT,
+    bursar_comment TEXT,
     admin_comment TEXT,
     applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     hod_approved_at TIMESTAMP,
+    vc_approved_at TIMESTAMP,
     hr_approved_at TIMESTAMP,
+    bursar_approved_at TIMESTAMP,
     final_approved_at TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

@@ -1,14 +1,32 @@
 import React, { useState } from 'react';
 import { useLeave } from '../../hooks/useLeave';
+import { useAuth } from '../../hooks/useAuth';
 import { CheckIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import { differenceInYears, differenceInMonths } from 'date-fns';
 
 const LeaveApproval: React.FC = () => {
+  const { user } = useAuth();
   const { pendingApprovals, approveLeave, rejectLeave, loading } = useLeave();
   const [selectedLeave, setSelectedLeave] = useState<any>(null);
   const [comment, setComment] = useState('');
+  
+  // Specific role states
+  const [registrarGrantedDays, setRegistrarGrantedDays] = useState<number>(0);
+  const [deferLeave, setDeferLeave] = useState<boolean>(false);
+  const [deferralDate, setDeferralDate] = useState<string>('');
 
   const handleApprove = async (leaveId: number) => {
-    await approveLeave(leaveId, comment);
+    // Collect extra payload based on role
+    const payload: any = { comment };
+    if (user?.role === 'hr') {
+      payload.registrarGrantedDays = registrarGrantedDays;
+    }
+    if (user?.role === 'hod') {
+      payload.isDeferred = deferLeave;
+      if (deferLeave) payload.postponedDefermentDate = deferralDate;
+    }
+
+    await approveLeave(leaveId, payload);
     setSelectedLeave(null);
     setComment('');
   };
@@ -56,13 +74,33 @@ const LeaveApproval: React.FC = () => {
                 </p>
               </div>
               <div>
-                <p className="text-gray-500">Total Days</p>
+                <p className="text-gray-500">Total Days Applied</p>
                 <p className="font-medium text-gray-900">{leave.totalDays} days</p>
               </div>
               <div>
                 <p className="text-gray-500">Applied On</p>
                 <p className="font-medium text-gray-900">{new Date(leave.appliedAt).toLocaleDateString()}</p>
               </div>
+              
+              {/* Extra info for HR / Registrar */}
+              {user?.role === 'hr' && (
+                <>
+                  <div>
+                    <p className="text-gray-500">Appointment Date</p>
+                    <p className="font-medium text-gray-900">
+                      {leave.user?.dateOfAppointment ? new Date(leave.user.dateOfAppointment).toLocaleDateString() : 'N/A'}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-gray-500">Length of Service</p>
+                    <p className="font-medium text-gray-900">
+                      {leave.user?.dateOfAppointment 
+                        ? `${differenceInYears(new Date(), new Date(leave.user.dateOfAppointment))} yrs, ${differenceInMonths(new Date(), new Date(leave.user.dateOfAppointment)) % 12} mos` 
+                        : 'Unknown'}
+                    </p>
+                  </div>
+                </>
+              )}
             </div>
 
             <div className="mb-4">
@@ -71,17 +109,62 @@ const LeaveApproval: React.FC = () => {
             </div>
 
             {selectedLeave === leave.id && (
-              <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Comments (Optional)
-                </label>
-                <textarea
-                  value={comment}
-                  onChange={(e) => setComment(e.target.value)}
-                  rows={3}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Add any comments or remarks..."
-                />
+              <div className="mb-4 space-y-4 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                {/* HR specifics */}
+                {user?.role === 'hr' && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Registrar Granted Days *
+                    </label>
+                    <input
+                      type="number"
+                      value={registrarGrantedDays}
+                      onChange={(e) => setRegistrarGrantedDays(parseInt(e.target.value))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                      min={0}
+                    />
+                  </div>
+                )}
+                
+                {/* HOD specifics */}
+                {user?.role === 'hod' && (
+                  <div className="flex flex-col gap-2">
+                    <label className="flex items-center gap-2 text-sm font-medium text-gray-700 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={deferLeave}
+                        onChange={(e) => setDeferLeave(e.target.checked)}
+                        className="rounded text-green-600 focus:ring-green-500"
+                      />
+                      Is Leave to be deferred?
+                    </label>
+                    {deferLeave && (
+                      <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-1">When will it be taken?</label>
+                        <input
+                          type="date"
+                          value={deferralDate}
+                          onChange={(e) => setDeferralDate(e.target.value)}
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                        />
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* General Comment */}
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    {user?.role === 'hr' ? 'Registrar Remarks' : user?.role === 'bursar' ? 'Bursary Remarks' : 'Comments'} (Optional)
+                  </label>
+                  <textarea
+                    value={comment}
+                    onChange={(e) => setComment(e.target.value)}
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    placeholder="Add any comments or remarks..."
+                  />
+                </div>
               </div>
             )}
 

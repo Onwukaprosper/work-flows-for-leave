@@ -12,7 +12,7 @@
 // }
 
 
-export type LeaveStatus = 'pending' | 'hod_approved' | 'hr_approved' | 'approved' | 'rejected' | 'cancelled';
+export type LeaveStatus = 'pending' | 'hod_approved' | 'vc_approved' | 'hr_approved' | 'bursar_approved' | 'approved' | 'rejected' | 'cancelled';
 
 export interface LeaveType {
   id: number;
@@ -31,6 +31,11 @@ export interface LeaveApplication {
     lastName: string;
     staffId: string;
     department: string;
+    presentPost?: string;
+    salaryScale?: string;
+    salaryGrade?: string;
+    salaryStep?: number;
+    dateOfAppointment?: string;
   };
   leaveTypeId: number;
   leaveTypeName: string;
@@ -38,15 +43,26 @@ export interface LeaveApplication {
   startDate: string;
   endDate: string;
   totalDays: number;
+  academicSession?: string;
+  deferredDaysBroughtForward?: number;
+  reasonForDeferment?: string;
+  addressOnLeave?: string;
+  expectedResumptionDate?: string;
+  leaveGrantRequested?: boolean;
+  registrarGrantedDays?: number;
   reason: string;
   documentPath?: string;
   status: LeaveStatus;
   hodComment?: string;
+  vcComment?: string;
   hrComment?: string;
+  bursarComment?: string;
   adminComment?: string;
   appliedAt: string;
   hodApprovedAt?: string;
+  vcApprovedAt?: string;
   hrApprovedAt?: string;
+  bursarApprovedAt?: string;
   finalApprovedAt?: string;
   updatedAt?: string;
 }
@@ -65,6 +81,11 @@ export interface LeaveApplicationFormData {
   leaveTypeId: number;
   startDate: string;
   endDate: string;
+  academicSession?: string;
+  addressOnLeave?: string;
+  deferredDaysBroughtForward?: number;
+  reasonForDeferment?: string;
+  leaveGrantRequested?: boolean;
   reason: string;
   document?: File;
 }

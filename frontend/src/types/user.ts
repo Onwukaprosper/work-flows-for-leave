@@ -1,4 +1,4 @@
-export type UserRole = 'staff' | 'hod' | 'hr' | 'admin';
+export type UserRole = 'staff' | 'hod' | 'vc' | 'hr' | 'bursar' | 'admin';
 export interface User {
   id: number;
   staffId: string;
@@ -7,12 +7,16 @@ export interface User {
   lastName: string;
   department: string;
   position: string;
+  presentPost?: string;
+  salaryScale?: string;
+  salaryGrade?: string;
+  salaryStep?: number;
   role: UserRole;
   remainingLeaveDays: number;
   annualLeaveDays?: number;
   profilePicture?: string;
   phoneNumber?: string;
-  hireDate?: string;
+  dateOfAppointment?: string;
   createdAt?: string;
   updatedAt?: string;
 }
