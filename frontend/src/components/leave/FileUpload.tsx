@@ -54,15 +54,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
           {...getRootProps()}
           className={`mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-dashed rounded-md transition-colors cursor-pointer
             ${isDragActive 
-              ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20' 
-              : 'border-gray-300 dark:border-gray-600 hover:border-blue-400 dark:hover:border-blue-500'
+              ? 'border-green-500 bg-green-50 dark:bg-green-900/20' 
+              : 'border-gray-300 dark:border-gray-600 hover:border-green-400 dark:hover:border-green-500'
             }`}
         >
           <input {...getInputProps()} />
           <div className="space-y-1 text-center">
             <DocumentArrowUpIcon className="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" />
             <div className="flex text-sm text-gray-600 dark:text-gray-400">
-              <span className="relative font-medium text-blue-600 dark:text-blue-400 hover:text-blue-500">
+              <span className="relative font-medium text-green-600 dark:text-green-400 hover:text-green-500">
                 Upload a file
               </span>
               <p className="pl-1">or drag and drop</p>
@@ -75,7 +75,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       ) : (
         <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-md">
           <div className="flex items-center gap-2">
-            <DocumentIcon className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+            <DocumentIcon className="h-5 w-5 text-green-600 dark:text-green-400" />
             <span className="text-sm text-gray-700 dark:text-gray-300">{file.name}</span>
             <span className="text-xs text-gray-500 dark:text-gray-400">
               ({(file.size / 1024).toFixed(1)} KB)

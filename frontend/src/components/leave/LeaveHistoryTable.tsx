@@ -10,7 +10,7 @@
 //               href={`http://localhost:8000/api/uploads/${leave.documentPath.split('/').pop()}`}
 //               target="_blank"
 //               rel="noopener noreferrer"
-//               className="ml-2 text-blue-600 hover:underline"
+//               className="ml-2 text-green-600 hover:underline"
 //             >
 //               View Document
 //             </a>

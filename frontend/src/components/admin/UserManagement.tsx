@@ -517,7 +517,7 @@ export default UserManagement;
 //     setShowModal(false);
 //   };
 
-//   if (loading) return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div></div>;
+//   if (loading) return <div className="flex justify-center items-center h-64"><div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600"></div></div>;
 
 //   return (
 //     <div className="p-4 sm:p-6">
@@ -550,10 +550,10 @@ export default UserManagement;
 //                 <td className="px-6 py-4 text-sm">{user.firstName} {user.lastName}</td>
 //                 <td className="px-6 py-4 text-sm">{user.email}</td>
 //                 <td className="px-6 py-4 text-sm">{user.department}</td>
-//                 <td className="px-6 py-4"><span className={`badge ${user.role==='admin'?'bg-purple-100':user.role==='hod'?'bg-blue-100':'bg-gray-100'}`}>{user.role.toUpperCase()}</span></td>
+//                 <td className="px-6 py-4"><span className={`badge ${user.role==='admin'?'bg-purple-100':user.role==='hod'?'bg-green-100':'bg-gray-100'}`}>{user.role.toUpperCase()}</span></td>
 //                 <td className="px-6 py-4 text-sm">{user.remainingLeaveDays} days</td>
 //                 <td className="px-6 py-4 text-right space-x-2">
-//                   <button onClick={() => setEditingUser(user)} className="text-blue-600"><PencilIcon className="h-5 w-5" /></button>
+//                   <button onClick={() => setEditingUser(user)} className="text-green-600"><PencilIcon className="h-5 w-5" /></button>
 //                   <button onClick={() => userService.deleteUser(user.id)} className="text-red-600"><TrashIcon className="h-5 w-5" /></button>
 //                 </td>
 //               </tr>
@@ -568,13 +568,13 @@ export default UserManagement;
 //           <div key={user.id} className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 border">
 //             <div className="flex justify-between items-start">
 //               <div><p className="font-semibold">{user.firstName} {user.lastName}</p><p className="text-sm text-gray-500">{user.staffId}</p></div>
-//               <span className={`badge ${user.role==='admin'?'bg-purple-100':user.role==='hod'?'bg-blue-100':'bg-gray-100'}`}>{user.role.toUpperCase()}</span>
+//               <span className={`badge ${user.role==='admin'?'bg-purple-100':user.role==='hod'?'bg-green-100':'bg-gray-100'}`}>{user.role.toUpperCase()}</span>
 //             </div>
 //             <p className="text-sm mt-2"><span className="font-medium">Email:</span> {user.email}</p>
 //             <p className="text-sm"><span className="font-medium">Dept:</span> {user.department}</p>
 //             <p className="text-sm"><span className="font-medium">Leave:</span> {user.remainingLeaveDays} days</p>
 //             <div className="flex justify-end gap-3 mt-3 pt-2 border-t">
-//               <button onClick={() => setEditingUser(user)} className="text-blue-600 text-sm">Edit</button>
+//               <button onClick={() => setEditingUser(user)} className="text-green-600 text-sm">Edit</button>
 //               <button onClick={() => userService.deleteUser(user.id)} className="text-red-600 text-sm">Delete</button>
 //             </div>
 //           </div>
