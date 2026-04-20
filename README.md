@@ -42,6 +42,8 @@ GRANT ALL PRIVILEGES ON DATABASE mouau_leave_system TO mouau_user;
 # Run migrations
 psql -U mouau_user -d mouau_leave_system -f database/schema.sql
 
+Run with: chmod +x run_migrations.sh && ./run_migrations.sh
+
 # Start PHP server
 php -S localhost:8000 -t backend/
 

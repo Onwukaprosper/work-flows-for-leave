@@ -74,3 +74,20 @@ note: any step that decline the leave, will crash the leave back to rejected sta
 8. feature a calendar from google API
 9. Did we integrate SMS/Email notification
 10. Can we integrate the calender in a way we can set the leave date by selecting the days on the calender
+
+
+### Implemented Tasks
+
+✅ Proper leave rejection with reasons
+
+✅ Active/On-going leave status tracking
+
+✅ Back to duty notification system
+
+✅ Google Calendar API for Nigerian holidays
+
+✅ Working days calculation (excluding weekends & holidays)
+
+✅ Email/SMS notifications for approvals/rejections
+
+✅ Interactive calendar for date selection

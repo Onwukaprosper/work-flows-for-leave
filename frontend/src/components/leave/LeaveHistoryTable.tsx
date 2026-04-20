@@ -1,3 +1,26 @@
+// {expandedRows.includes(leave.id) && (
+//   <tr className="bg-gray-50 dark:bg-gray-800">
+//     <td colSpan={7} className="px-6 py-4">
+//       <div className="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+//         {/* ... existing details ... */}
+//         {leave.documentPath && (
+//           <div>
+//             <span className="font-medium">Attachment:</span>
+//             <a 
+//               href={`http://localhost:8000/api/uploads/${leave.documentPath.split('/').pop()}`}
+//               target="_blank"
+//               rel="noopener noreferrer"
+//               className="ml-2 text-blue-600 hover:underline"
+//             >
+//               View Document
+//             </a>
+//           </div>
+//         )}
+//       </div>
+//     </td>
+//   </tr>
+// )}
+
 import React, { useState } from 'react';
 import { ChevronDownIcon, ChevronRightIcon, DocumentTextIcon } from '@heroicons/react/24/outline';
 

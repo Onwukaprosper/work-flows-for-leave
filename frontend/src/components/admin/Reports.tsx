@@ -5,6 +5,7 @@ import {
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
 import toast from 'react-hot-toast';
+import PDFExportService from '../../services/pdfExportService';
 
 interface ReportData {
   monthlyLeaves: { month: string; count: number }[];
@@ -58,6 +59,22 @@ const Reports: React.FC = () => {
     }, 500);
   }, []);
 
+  const handleExportReport = () => {
+    if (data && data.departmentLeaves) {
+      // Transform data for PDF
+      const reportData = data.departmentLeaves.map(dept => ({
+        firstName: dept.department,
+        lastName: '',
+        department: dept.department,
+        leaveTypeName: 'Various',
+        totalDays: dept.count,
+        status: 'N/A',
+        appliedAt: new Date().toISOString()
+      }));
+      PDFExportService.exportLeaveReport(reportData, `${reportType} Report`);
+    }
+  };
+
   const handleExport = (format: 'pdf' | 'excel') => {
     toast.success(`Exporting as ${format.toUpperCase()}...`);
     // Implement actual export logic here
@@ -74,9 +91,12 @@ const Reports: React.FC = () => {
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Reports & Analytics</h2>
-        <p className="text-gray-600 mt-1">View leave statistics and generate reports</p>
+      <div className="flex justify-between items-center mb-6">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Reports & Analytics</h2>
+          <p className="text-gray-600 dark:text-gray-400 mt-1">View leave statistics and generate reports</p>
+        </div>
+        {/* forml button position */}
       </div>
 
       {/* Filters */}
@@ -114,16 +134,16 @@ const Reports: React.FC = () => {
             />
           </div>
           <div className="flex items-end gap-2">
-            <button className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
+            <button onClick={() =>toast.error("This Feature is Disabled")} className="flex-1 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700">
               Generate
             </button>
             <button
-              onClick={() => handleExport('excel')}
-              className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50 flex items-center gap-2"
-            >
-              <DocumentArrowDownIcon className="h-5 w-5" />
-              Export
-            </button>
+          onClick={handleExportReport}
+          className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 flex items-center gap-2"
+        >
+          <DocumentArrowDownIcon className="h-5 w-5" />
+          Export
+        </button>
           </div>
         </div>
       </div>
@@ -195,7 +215,7 @@ const Reports: React.FC = () => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={(entry) => `${entry.type}: ${entry.count}`}
+                label={(entry) => `${entry.payload.type}: ${entry.payload.count}`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="count"
@@ -233,7 +253,7 @@ const Reports: React.FC = () => {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={(entry) => `${entry.status}: ${entry.count}`}
+                label={(entry) => `${entry.payload.status}: ${entry.payload.count}`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="count"

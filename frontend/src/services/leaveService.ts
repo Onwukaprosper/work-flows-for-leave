@@ -1,4 +1,6 @@
 export interface LeaveApplication {
+  hodComment: any;
+  hrComment: any;
   id: number;
   userId: number;
   leaveTypeId: number;
@@ -18,41 +20,6 @@ export interface LeaveBalance {
   remainingDays: number;
 }
 
-// export const leaveService = {
-//   applyForLeave: async (formData: FormData) => {
-//     const response = await api.post('/leave', formData, {
-//       headers: { 'Content-Type': 'multipart/form-data' },
-//     });
-//     return response.data;
-//   },
-
-//   getUserLeaves: async (userId: number) => {
-//     const response = await api.get(`/leave/user/${userId}`);
-//     return response.data;
-//   },
-
-//   getLeaveBalance: async (userId: number) => {
-//     const response = await api.get(`/leave/balance/${userId}`);
-//     return response.data;
-//   },
-
-//   getPendingApprovals: async () => {
-//     const response = await api.get('/leave/pending');
-//     return response.data;
-//   },
-
-//   approveLeave: async (leaveId: number, comment?: string) => {
-//     const response = await api.put(`/leave/approve/${leaveId}`, { comment });
-//     return response.data;
-//   },
-
-//   rejectLeave: async (leaveId: number, comment?: string) => {
-//     const response = await api.put(`/leave/reject/${leaveId}`, { comment });
-//     return response.data;
-//   },
-// };
-
-// /////////   |||||||||||  Add mock data  ||||||||||||
 export const leaveService = {
   applyForLeave: async (formData: FormData) => {
     // Mock successful submission
@@ -79,11 +46,11 @@ export const leaveService = {
         id: 2,
         userId: userId,
         leaveTypeId: 2,
-        leaveTypeName: "Sick Leave",
+        leaveTypeName: "Paternity Leave",
         startDate: "2024-02-10",
         endDate: "2024-02-11",
         totalDays: 2,
-        reason: "Flu",
+        reason: "Son's birthday",
         status: "pending",
         appliedAt: "2024-02-09T08:30:00Z"
       }

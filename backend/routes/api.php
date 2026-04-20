@@ -101,3 +101,60 @@ switch ($path[0] ?? '') {
         http_response_code(404);
         echo json_encode(['error' => 'Endpoint not found']);
 }
+
+
+// Leave routes with new endpoints
+$router->post('/leave', 'LeaveController@createLeave');
+$router->get('/leave/user/{id}', 'LeaveController@getUserLeaves');
+$router->get('/leave/balance/{id}', 'LeaveController@getLeaveBalance');
+$router->get('/leave/pending', 'LeaveController@getPendingApprovals');
+$router->put('/leave/approve/{id}', 'LeaveController@approveLeave');
+$router->put('/leave/reject/{id}', 'LeaveController@rejectLeave');
+$router->put('/leave/activate/{id}', 'LeaveController@markAsActive');
+$router->put('/leave/complete/{id}', 'LeaveController@markAsCompleted');
+$router->post('/leave/return-notify/{id}', 'LeaveController@notifyBackToDuty');
+
+// Holiday routes
+$router->get('/holidays/{year}', 'CalendarController@getHolidays');
+$router->get('/holidays/check', 'CalendarController@checkDate');
+
+// Notification routes
+$router->get('/notifications', 'NotificationController@getNotifications');
+$router->put('/notifications/{id}/read', 'NotificationController@markAsRead');
+$router->post('/notifications/send-reminder', 'NotificationController@sendReminder');
+
+
+// Leave routes with new endpoints
+$router->post('/leave', 'LeaveController@createLeave');
+$router->get('/leave/user/{id}', 'LeaveController@getUserLeaves');
+$router->get('/leave/balance/{id}', 'LeaveController@getLeaveBalance');
+$router->get('/leave/pending', 'LeaveController@getPendingApprovals');
+$router->put('/leave/approve/{id}', 'LeaveController@approveLeave');
+$router->put('/leave/reject/{id}', 'LeaveController@rejectLeave');
+$router->put('/leave/activate/{id}', 'LeaveController@markAsActive');
+$router->put('/leave/complete/{id}', 'LeaveController@markAsCompleted');
+$router->post('/leave/return-notify/{id}', 'LeaveController@notifyBackToDuty');
+
+// Holiday routes
+$router->get('/holidays/{year}', 'CalendarController@getHolidays');
+$router->get('/holidays/check', 'CalendarController@checkDate');
+
+// Notification routes
+$router->get('/notifications', 'NotificationController@getNotifications');
+$router->put('/notifications/{id}/read', 'NotificationController@markAsRead');
+$router->post('/notifications/send-reminder', 'NotificationController@sendReminder');
+
+
+
+// Serve uploaded files (protected)
+$router->get('/uploads/{filename}', function($filename) {
+    $filePath = __DIR__ . '/../uploads/leave_documents/' . basename($filename);
+    if (file_exists($filePath)) {
+        header('Content-Type: ' . mime_content_type($filePath));
+        header('Content-Disposition: inline; filename="' . $filename . '"');
+        readfile($filePath);
+        exit;
+    }
+    http_response_code(404);
+    echo "File not found";
+});

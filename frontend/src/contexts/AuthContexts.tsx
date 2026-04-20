@@ -13,6 +13,61 @@ interface AuthContextType {
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+//   const [user, setUser] = useState<User | null>(null);
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const currentUser = authService.getCurrentUser();
+//     if (currentUser) {
+//       setUser(currentUser);
+//     }
+//     setLoading(false);
+//   }, []);
+
+//   const login = async (email: string, password: string) => {
+//     try {
+//       const response = await authService.login({ email, password });
+//       setUser(response.user);
+//       toast.success('Login successful!');
+//     } catch (error: any) {
+//       toast.error(error.response?.data?.message || 'Login failed');
+//       throw error;
+//     }
+//   };
+
+//   const logout = () => {
+//     authService.logout();
+//     setUser(null);
+//     toast.success('Logged out successfully');
+//   };
+
+//   return (
+//     <AuthContext.Provider
+//       value={{
+//         user,
+//         isAuthenticated: !!user,
+//         loading,
+//         login,
+//         logout,
+//       }}
+//     >
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+
+
+interface AuthContextType {
+  user: User | null;
+  isAuthenticated: boolean;
+  loading: boolean;
+  login: (email: string, password: string) => Promise<void>;
+  logout: () => void;
+  setUser: (user: User | null) => void; // Add this line
+}
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -42,6 +97,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     toast.success('Logged out successfully');
   };
 
+
   return (
     <AuthContext.Provider
       value={{
@@ -50,6 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading,
         login,
         logout,
+        setUser, // Add this line
       }}
     >
       {children}
