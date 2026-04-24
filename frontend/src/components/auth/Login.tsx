@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import { 
-  EnvelopeIcon, 
-  LockClosedIcon, 
-  EyeIcon, 
+import {
+  EnvelopeIcon,
+  LockClosedIcon,
+  EyeIcon,
   EyeSlashIcon,
   ShieldCheckIcon,
   ArrowRightIcon,
@@ -47,14 +47,14 @@ const Login: React.FC = () => {
   const [show2FA, setShow2FA] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resendTimer, setResendTimer] = useState(0);
-  
+
   // Login form state
   const [loginForm, setLoginForm] = useState<LoginFormData>({
     email: '',
     password: '',
     twoFactorCode: '',
   });
-  
+
   // Signup form state
   const [signupForm, setSignupForm] = useState<SignupFormData>({
     staffId: '',
@@ -66,7 +66,7 @@ const Login: React.FC = () => {
     password: '',
     confirmPassword: '',
   });
-  
+
   // Forgot password form state
   const [forgotForm, setForgotForm] = useState<ForgotPasswordData>({
     email: '',
@@ -75,7 +75,7 @@ const Login: React.FC = () => {
     confirmPassword: '',
   });
   const [resetCodeSent, setResetCodeSent] = useState(false);
-  
+
   // Mock user data for testing
   const mockUsers = [
     {
@@ -159,12 +159,12 @@ const Login: React.FC = () => {
   const mockLogin = async (email: string, password: string): Promise<any> => {
     // Simulate API delay
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
+
     const user = mockUsers.find(u => u.email === email && u.password === password);
     if (!user) {
       throw new Error('Invalid email or password');
     }
-    
+
     return {
       token: 'mock-jwt-token-' + Date.now(),
       user: {
@@ -184,14 +184,14 @@ const Login: React.FC = () => {
   // Handle login submission
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!loginForm.email || !loginForm.password) {
       toast.error('Please enter your email and password');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Try to call real API first, fallback to mock
       let response;
@@ -205,7 +205,7 @@ const Login: React.FC = () => {
         localStorage.setItem('user', JSON.stringify(response.user));
         if (setUser) setUser(response.user);
       }
-      
+
       // Show 2FA modal if enabled
       setShow2FA(true);
       toast.success('Please enter your 2FA code');
@@ -219,15 +219,15 @@ const Login: React.FC = () => {
   // Handle 2FA verification
   const handle2FAVerification = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Default 2FA code is 123456
     if (loginForm.twoFactorCode !== '123456') {
       toast.error('Invalid 2FA code. Please try again.');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Simulate 2FA verification
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -243,35 +243,35 @@ const Login: React.FC = () => {
   // Handle signup submission
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Validation
     if (!signupForm.staffId || !signupForm.email || !signupForm.firstName || !signupForm.lastName) {
       toast.error('Please fill in all required fields');
       return;
     }
-    
+
     if (signupForm.password !== signupForm.confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-    
+
     if (signupForm.password.length < 6) {
       toast.error('Password must be at least 6 characters');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Mock signup - in production, this would call the API
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
+
       // Check if user already exists
       const existingUser = mockUsers.find(u => u.email === signupForm.email);
       if (existingUser) {
         throw new Error('User with this email already exists');
       }
-      
+
       toast.success('Account created successfully! Please login.');
       setActiveTab('login');
       setSignupForm({
@@ -294,25 +294,25 @@ const Login: React.FC = () => {
   // Handle forgot password - send reset code
   const handleSendResetCode = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!forgotForm.email) {
       toast.error('Please enter your email address');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Mock API call to send reset code
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       // Check if email exists in mock users
       const userExists = mockUsers.some(u => u.email === forgotForm.email);
       if (!userExists) {
         toast.error('Email not found in our records');
         return;
       }
-      
+
       setResetCodeSent(true);
       setResendTimer(60);
       toast.success('Reset code sent to your email! Default code: 123456');
@@ -326,33 +326,33 @@ const Login: React.FC = () => {
   // Handle password reset
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!forgotForm.resetCode || !forgotForm.newPassword || !forgotForm.confirmPassword) {
       toast.error('Please fill in all fields');
       return;
     }
-    
+
     if (forgotForm.resetCode !== '123456') {
       toast.error('Invalid reset code');
       return;
     }
-    
+
     if (forgotForm.newPassword !== forgotForm.confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-    
+
     if (forgotForm.newPassword.length < 6) {
       toast.error('Password must be at least 6 characters');
       return;
     }
-    
+
     setLoading(true);
-    
+
     try {
       // Mock password reset
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
+
       toast.success('Password reset successful! Please login with your new password.');
       setActiveTab('login');
       setResetCodeSent(false);
@@ -372,7 +372,7 @@ const Login: React.FC = () => {
   // Resend reset code
   const handleResendCode = async () => {
     if (resendTimer > 0) return;
-    
+
     setLoading(true);
     try {
       await new Promise(resolve => setTimeout(resolve, 500));
@@ -395,7 +395,7 @@ const Login: React.FC = () => {
 
       {/* Main Container */}
       <div className="relative w-full max-w-6xl flex flex-col lg:flex-row bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden">
-        
+
         {/* Left Panel - Branding */}
         <div className="lg:w-1/2 bg-gradient-to-br from-green-600 to-green-900 dark:from-green-700 dark:to-green-900 p-8 lg:p-12 flex flex-col justify-between">
           <div>
@@ -403,14 +403,14 @@ const Login: React.FC = () => {
               <AcademicCapIcon className="h-10 w-10 text-white" />
               <h1 className="text-2xl font-bold text-white">Michael Okpara University of Agriculture, Umudike</h1>
             </div>
-            
+
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               Leave Management System
             </h2>
             <p className="text-green-100 text-lg mb-8">
               Streamline your leave applications, approvals, and tracking all in one place.
             </p>
-            
+
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-white">
                 <CheckBadgeIcon className="h-5 w-5" />
@@ -430,7 +430,7 @@ const Login: React.FC = () => {
               </div>
             </div>
           </div>
-          
+
           <div className="mt-8">
             <p className="text-green-200 text-sm">
               © {new Date().getFullYear()} MOUAU. All rights reserved.
@@ -568,6 +568,8 @@ const Login: React.FC = () => {
                   <p>HOD: hod@mouau.edu.ng / password123</p>
                   <p>HR: hr@mouau.edu.ng / password123</p>
                   <p>Admin: admin@mouau.edu.ng / password123</p>
+                  <p>Bursar: bursar@mouau.edu.ng / password123</p>
+                  <p>VC: vc@mouau.edu.ng / password123</p>
                   <p className="text-green-600 dark:text-green-400 mt-2">2FA Code: 123456</p>
                 </div>
               </div>
