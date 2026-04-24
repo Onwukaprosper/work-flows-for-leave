@@ -10,6 +10,26 @@ const LeaveApproval: React.FC = () => {
   const { pendingApprovals, approveLeave, rejectLeave, loading } = useLeave();
   const [selectedLeave, setSelectedLeave] = useState<any>(null);
   const [comment, setComment] = useState('');
+  
+  // Filter approvals based on role workflow tier
+  const filteredApprovals = pendingApprovals?.filter((leave: any) => {
+    const applicantRole = leave.user?.role || 'staff';
+    
+    if (user?.role === 'hod') {
+      return leave.status === 'pending' && applicantRole === 'staff';
+    }
+    if (user?.role === 'hr') {
+      return leave.status === 'vc_approved';
+    }
+    if (user?.role === 'vc') {
+      return (leave.status === 'pending' && ['hod', 'dean'].includes(applicantRole)) || leave.status === 'hod_approved';
+    }
+    if (user?.role === 'bursar') {
+      return leave.status === 'pending_bursary';
+    }
+    if (user?.role === 'admin') return true;
+    return false;
+  });
   const [rejectionReason, setRejectionReason] = useState('');
   const [activeTab, setActiveTab] = useState<'pending' | 'active' | 'completed'>('pending');
   
@@ -17,6 +37,21 @@ const LeaveApproval: React.FC = () => {
   const [registrarGrantedDays, setRegistrarGrantedDays] = useState<number>(0);
   const [deferLeave, setDeferLeave] = useState<boolean>(false);
   const [deferralDate, setDeferralDate] = useState<string>('');
+
+  const getBadgeLabel = (status: string, role: string) => {
+    if (status === 'pending') return role === 'staff' ? 'Pending HOD Approval' : 'Pending VC Approval';
+    if (status === 'hod_approved') return 'Pending VC Approval';
+    if (status === 'vc_approved') return 'Pending HR/Registrar Approval';
+    if (status === 'pending_bursary') return 'Pending Bursary Clearance';
+    return 'Pending';
+  };
+
+  const getBadgeColor = (status: string) => {
+    if (status === 'pending') return 'bg-yellow-100 text-yellow-800';
+    if (status === 'hod_approved' || status === 'vc_approved') return 'bg-blue-100 text-blue-800';
+    if (status === 'pending_bursary') return 'bg-purple-100 text-purple-800';
+    return 'bg-green-100 text-green-800';
+  };
 
   const handleApprove = async (leaveId: number) => {
     // Collect extra payload based on role
@@ -69,7 +104,7 @@ const LeaveApproval: React.FC = () => {
                 : 'border-transparent text-gray-500 hover:text-gray-700'
             }`}
           >
-            Pending Approvals ({pendingApprovals?.filter(l => l.status === 'pending' || l.status === 'hod_approved').length || 0})
+            Pending Approvals ({filteredApprovals?.length || 0})
           </button>
           <button
             onClick={() => setActiveTab('active')}
@@ -99,7 +134,7 @@ const LeaveApproval: React.FC = () => {
         {/* Pending Approvals */}
         {activeTab === 'pending' && (
           <>
-            {pendingApprovals?.filter(l => l.status === 'pending' || l.status === 'hod_approved').map((leave: any) => (
+            {filteredApprovals?.map((leave: any) => (
               <div key={leave.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 {/* Leave details */}
                 <div className="flex justify-between items-start mb-4">
@@ -109,10 +144,8 @@ const LeaveApproval: React.FC = () => {
                     </h3>
                     <p className="text-sm text-gray-500">{leave.user?.department} - {leave.user?.position}</p>
                   </div>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                    leave.status === 'pending' ? 'bg-yellow-100 text-yellow-800' : 'bg-green-100 text-green-800'
-                  }`}>
-                    {leave.status === 'pending' ? 'Pending HOD Approval' : 'Pending HR Approval'}
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getBadgeColor(leave.status)}`}>
+                    {getBadgeLabel(leave.status, leave.user?.role || 'staff')}
                   </span>
                 </div>
 
@@ -292,7 +325,7 @@ const LeaveApproval: React.FC = () => {
               </div>
             ))}
 
-            {(!pendingApprovals || pendingApprovals.filter(l => l.status === 'pending' || l.status === 'hod_approved').length === 0) && (
+            {(!filteredApprovals || filteredApprovals.length === 0) && (
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-12 text-center">
                 <CheckIcon className="h-12 w-12 text-green-500 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900">No Pending Approvals</h3>
