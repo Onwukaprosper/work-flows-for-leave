@@ -117,7 +117,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
             <label className="block text-xs font-medium text-gray-500 mb-1">DATE FROM</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
               value={filters.dateFrom}
               onChange={(e) => setFilters({ ...filters, dateFrom: e.target.value })}
             />
@@ -126,7 +126,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
             <label className="block text-xs font-medium text-gray-500 mb-1">DATE TO</label>
             <input
               type="date"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
               value={filters.dateTo}
               onChange={(e) => setFilters({ ...filters, dateTo: e.target.value })}
             />
@@ -134,7 +134,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">LEAVE TYPE</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
               value={filters.leaveType}
               onChange={(e) => setFilters({ ...filters, leaveType: e.target.value })}
             >
@@ -151,7 +151,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
           <div>
             <label className="block text-xs font-medium text-gray-500 mb-1">STATUS</label>
             <select
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
               value={filters.status}
               onChange={(e) => setFilters({ ...filters, status: e.target.value })}
             >
@@ -206,7 +206,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
                     {leave.mode || getMode(leave.startDate || '', leave.endDate || '', leave.totalDays || leave.days)}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500">
-                    {(leave.totalDays || leave.days).toFixed(2)}
+                    {(leave.totalDays || leave.days).toFixed(0)}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500 max-w-xs truncate">
                     {leave.reason}
@@ -293,7 +293,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves, onSearch 
                 setItemsPerPage(Number(e.target.value));
                 setCurrentPage(1);
               }}
-              className="border border-gray-300 rounded-md text-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="border border-gray-300 rounded-md text-sm px-2 py-1 focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
             >
               <option value={10}>10</option>
               <option value={25}>25</option>

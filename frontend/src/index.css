@@ -307,3 +307,48 @@
 .dark .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
   border-color: rgb(55 65 81);
 }
+
+/* frontend/src/index.css - Add at the bottom */
+
+/* Background logo watermark */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('./assets/mouau\ logo.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dark body::before {
+  opacity: 0.6;
+  background-image: url('./assets/mouau\ logo.png');
+}
+
+/* Make cards slightly transparent to show logo */
+.card, 
+.bg-white,
+.bg-gray-50 {
+  /* background-color: rgba(255, 255, 255, 0.92) !important; */
+  opacity: 0.98;
+}
+
+.dark .bg-gray-800,
+.dark .bg-gray-900,
+.dark .card {
+  /* background-color: rgba(31, 41, 55, 0.92) !important; */
+  opacity: 0.98;
+}
+
+/* Set relative positioning for content */
+#root > div {
+  position: relative;
+  z-index: 1;
+}

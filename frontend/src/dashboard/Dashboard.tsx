@@ -22,9 +22,10 @@ const Dashboard: React.FC = () => {
   
   // Mock data - we will replace this with API calls
   const stats: DashboardStats = {
-    leavesAllowed: 20,
-    availableLeave: 14,
+    leavesAllowed: 30,
     leavesTaken: 6,
+    // availableLeave: {leavesAllowed - leavesTaken},
+    availableLeave: 24,
     balanceLeave: 8
   };
 
@@ -39,20 +40,19 @@ const Dashboard: React.FC = () => {
   };
 
   const recentLeaves = [
-    { type: 'Monthly Leave', mode: 'Multi-Day', days: 2.0, reason: 'Emergency', status: 'pending' },
-    { type: 'Casual Leave', mode: 'Multi-Day', days: 3.0, reason: 'Casual', status: 'cancelled' },
-    { type: 'Emergency Leave', mode: 'Full Day', days: 1.0, reason: 'Emergency', status: 'approved' },
+    { type: 'Monthly Leave', mode: 'Multi-Day', days: 2, reason: 'Emergency', status: 'pending' },
+    { type: 'Casual Leave', mode: 'Multi-Day', days: 3, reason: 'Casual', status: 'cancelled' },
+    { type: 'Emergency Leave', mode: 'Full Day', days: 1, reason: 'Emergency', status: 'approved' },
   ];
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="text-2xl font-semibold text-gray-800">Dashboard</h1>
+        <h1 className="text-2xl font-semibold text-gray-800 dark:text-white">Dashboard</h1>
         <p className="text-gray-600 mt-1">Welcome back! Here's your leave overview</p>
       </div>
 
-      {/* Stats Cards - Matching your design */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         <StatCard
           title="Leave(s) Allowed"
@@ -62,7 +62,8 @@ const Dashboard: React.FC = () => {
         />
         <StatCard
           title="Available Leave"
-          value={stats.availableLeave}
+          value={stats.leavesAllowed - stats.leavesTaken}
+          // value={stats.availableLeave}
           icon={<ClockIcon className="h-8 w-8 text-green-500" />}
           color="green"
         />
@@ -74,7 +75,7 @@ const Dashboard: React.FC = () => {
         />
         <StatCard
           title="Balance Leave(s)"
-          value={stats.balanceLeave}
+          value={stats.leavesAllowed - stats.leavesTaken}
           icon={<UserGroupIcon className="h-8 w-8 text-purple-500" />}
           color="purple"
         />

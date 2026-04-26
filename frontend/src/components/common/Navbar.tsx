@@ -3,6 +3,7 @@ import { Bars3Icon, BellIcon, UserCircleIcon, SunIcon, MoonIcon } from '@heroico
 import { useAuth } from '../../hooks/useAuth';
 import { useTheme } from '../../contexts/ThemeContext';
 import NotificationCenter from '../notifications/NotificationCenter';
+import logo from "../../assets/mouau logo.png";
 
 interface NavbarProps {
   onMenuClick: () => void;
@@ -25,8 +26,9 @@ const Navbar: React.FC<NavbarProps> = ({ onMenuClick }) => {
             >
               <Bars3Icon className="h-6 w-6" />
             </button>
+            {/* <img href={`${logo}`} /> */}
             <div className="ml-4 flex-shrink-0 flex items-center">
-              <h1 className="text-xl font-bold text-green-600 dark:text-green-400">MOUAU Leave System</h1>
+              <h1 className="text-xl font-bold text-green-600 dark:text-green-400">MOUAU Leave Management System</h1>
             </div>
           </div>
 

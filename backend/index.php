@@ -1,5 +1,5 @@
 <?php
-    echo "Connecting to backend";
+    echo "Connecting to backend \n\r";
 
-    echo json_encode("Connected to Backend");
+    echo json_encode(["message" => "Connected to Backend"]);
 ?>

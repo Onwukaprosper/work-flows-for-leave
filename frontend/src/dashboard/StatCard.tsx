@@ -9,10 +9,10 @@ interface StatCardProps {
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, icon, color }) => {
   const colorClasses = {
-    blue: 'bg-green-50 border-green-200',
-    green: 'bg-green-50 border-green-200',
-    orange: 'bg-orange-50 border-orange-200',
-    purple: 'bg-purple-50 border-purple-200',
+    blue: 'bg-green-100 border-green-200',
+    green: 'bg-green-100 border-green-200',
+    orange: 'bg-orange-100 border-orange-200',
+    purple: 'bg-purple-100 border-purple-200',
   };
 
   const textColorClasses = {
@@ -26,7 +26,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, icon, color }) => {
     <div className={`rounded-lg border p-6 ${colorClasses[color]}`}>
       <div className="flex items-center justify-between mb-4">
         <div className={`${textColorClasses[color]}`}>{icon}</div>
-        <span className="text-2xl font-bold text-gray-800">{value.toFixed(2)}</span>
+        <span className="text-2xl font-bold text-gray-800">{value.toFixed(0)}</span>
       </div>
       <h3 className="text-sm font-medium text-gray-600">{title}</h3>
     </div>

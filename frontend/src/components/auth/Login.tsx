@@ -88,7 +88,7 @@ const Login: React.FC = () => {
       department: 'Computer Science',
       position: 'Lecturer',
       role: 'staff',
-      remainingLeaveDays: 14.5,
+      remainingLeaveDays: 14,
       phoneNumber: '+2348012345678',
     },
     {
@@ -400,6 +400,7 @@ const Login: React.FC = () => {
         <div className="lg:w-1/2 bg-gradient-to-br from-green-600 to-green-900 dark:from-green-700 dark:to-green-900 p-8 lg:p-12 flex flex-col justify-between">
           <div>
             <div className="flex items-center gap-3 mb-8">
+              {/* Add MOUAU Logo */}
               <AcademicCapIcon className="h-10 w-10 text-white" />
               <h1 className="text-2xl font-bold text-white">Michael Okpara University of Agriculture, Umudike</h1>
             </div>
@@ -465,7 +466,7 @@ const Login: React.FC = () => {
             >
               Create Account
             </button>
-            {!show2FA && (
+            {/* {!show2FA && (
               <button
                 onClick={() => setActiveTab('forgot')}
                 className={`pb-3 px-2 font-medium transition-colors ${
@@ -476,7 +477,7 @@ const Login: React.FC = () => {
               >
                 Forgot Password?
               </button>
-            )}
+            )} */}
           </div>
 
           {/* Login Form */}
@@ -777,7 +778,7 @@ const Login: React.FC = () => {
                 <>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Email Address
+                      Enter Your Email Address To Reset Password
                     </label>
                     <div className="relative">
                       <EnvelopeIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />

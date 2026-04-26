@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
   return (
     <div className="max-w-5xl mx-auto">
       <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Settings</h2>
+        <h2 className="dark:text-white text-2xl font-bold text-gray-800">Settings</h2>
         <p className="text-gray-600 mt-1">Manage your account preferences and security settings</p>
       </div>
 
@@ -87,7 +87,7 @@ const Settings: React.FC = () => {
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 bg-gray-50"
                   />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ const Settings: React.FC = () => {
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 bg-gray-50"
                   />
                 </div>
               </div>
@@ -111,7 +111,7 @@ const Settings: React.FC = () => {
                   type="email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 bg-gray-50"
                   disabled
                 />
                 <p className="mt-1 text-xs text-gray-500">Email cannot be changed. Contact admin for email updates.</p>
@@ -125,7 +125,7 @@ const Settings: React.FC = () => {
                   type="tel"
                   value={formData.phoneNumber}
                   onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 bg-gray-50"
                   placeholder="+234 XXX XXX XXXX"
                 />
               </div>
@@ -218,7 +218,7 @@ const Settings: React.FC = () => {
                   type="password"
                   value={formData.currentPassword}
                   onChange={(e) => setFormData({ ...formData, currentPassword: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
                   required
                 />
               </div>
@@ -231,7 +231,7 @@ const Settings: React.FC = () => {
                   type="password"
                   value={formData.newPassword}
                   onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
                   required
                 />
                 <p className="mt-1 text-xs text-gray-500">Password must be at least 8 characters</p>
@@ -245,7 +245,7 @@ const Settings: React.FC = () => {
                   type="password"
                   value={formData.confirmPassword}
                   onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50"
                   required
                 />
               </div>
@@ -268,7 +268,7 @@ const Settings: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Default Leave Type
                 </label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50">
                   <option>Annual Leave</option>
                   <option>Sick Leave</option>
                   <option>Casual Leave</option>
@@ -279,7 +279,7 @@ const Settings: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Date Format
                 </label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50">
                   <option>DD/MM/YYYY</option>
                   <option>MM/DD/YYYY</option>
                   <option>YYYY-MM-DD</option>
@@ -290,7 +290,7 @@ const Settings: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Language
                 </label>
-                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50">
                   <option>English</option>
                   <option>French</option>
                 </select>

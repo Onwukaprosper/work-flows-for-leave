@@ -110,7 +110,7 @@ const LeaveHistoryTable: React.FC<LeaveHistoryTableProps> = ({ leaves }) => {
                 <tr className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-sm text-gray-900">{leave.type}</td>
                   <td className="px-6 py-4 text-sm text-gray-500">{leave.mode}</td>
-                  <td className="px-6 py-4 text-sm text-gray-500">{leave.days.toFixed(2)}</td>
+                  <td className="px-6 py-4 text-sm text-gray-500">{leave.days.toFixed(0)}</td>
                   <td className="px-6 py-4 text-sm text-gray-500">{leave.reason}</td>
                   <td className="px-6 py-4 text-sm text-gray-500">{leave.comment || '-'}</td>
                   <td className="px-6 py-4">

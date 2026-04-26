@@ -1,6 +1,15 @@
 {
+    "name": "mouau/leave-system",
+    "description": "MOUAU Leave Management System Backend",
+    "type": "project",
     "require": {
         "phpmailer/phpmailer": "^7.0",
+        "firebase/php-jwt": "^6.10",
         "google/apiclient": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "MOUAU\\": "src/"
+        }
     }
 }

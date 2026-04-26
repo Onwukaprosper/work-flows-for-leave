@@ -43,7 +43,7 @@ ON CONFLICT (email) DO NOTHING;
 
 -- Insert sample staff user (password: Staff@123)
 INSERT INTO users (staff_id, email, password_hash, first_name, last_name, department, position, role, remaining_leave_days)
-VALUES ('STAFF001', 'staff@mouau.edu.ng', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'John', 'Doe', 'Computer Science', 'Senior Lecturer', 'staff', 14.5)
+VALUES ('STAFF001', 'staff@mouau.edu.ng', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'John', 'Doe', 'Computer Science', 'Senior Lecturer', 'staff', 14)
 ON CONFLICT (email) DO NOTHING;
 
 -- Create function to automatically update updated_at

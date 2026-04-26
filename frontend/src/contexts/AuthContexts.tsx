@@ -106,7 +106,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading,
         login,
         logout,
-        setUser, // Add this line
+        setUser,
       }}
     >
       {children}
