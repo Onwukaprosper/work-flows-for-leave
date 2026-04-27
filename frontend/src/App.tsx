@@ -38,7 +38,7 @@ function App() {
                   <Route path="leave/history" element={<LeaveHistory />} />
                   <Route path="leave/calendar" element={<LeaveCalendar />} />
                   <Route path="leave/approval" element={
-                    <ProtectedRoute allowedRoles={['hod', 'hr', 'admin']}>
+                    <ProtectedRoute allowedRoles={['hod', 'hr', 'vc', 'bursar', 'admin']}>
                       <LeaveApproval />
                     </ProtectedRoute>
                   } />
@@ -53,7 +53,7 @@ function App() {
                     </ProtectedRoute>
                   } />
                   <Route path="admin/reports" element={
-                    <ProtectedRoute allowedRoles={['hr', 'admin']}>
+                    <ProtectedRoute allowedRoles={['hr', 'admin','vc','hod', 'bursar']}>
                       <Reports />
                     </ProtectedRoute>
                   } />

@@ -45,7 +45,7 @@ export const LeaveProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const fetchPendingApprovals = async () => {
-    if (!user || !['hod', 'hr', 'admin'].includes(user.role)) return;
+    if (!user || !['hod', 'hr', 'vc', 'bursar', 'admin'].includes(user.role)) return;
     try {
       const data = await leaveService.getPendingApprovals();
       setPendingApprovals(data);

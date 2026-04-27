@@ -19,15 +19,15 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen }) => {
   const { user } = useAuth();
 
   const navigation = [
-    { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, roles: ['staff', 'hod', 'hr', 'admin'] },
-    { name: 'Apply Leave', href: '/leave/apply', icon: DocumentTextIcon, roles: ['staff', 'hod', 'hr', 'admin'] },
-    { name: 'Leave History', href: '/leave/history', icon: ClockIcon, roles: ['staff', 'hod', 'hr', 'admin'] },
-    { name: 'Leave Calendar', href: '/leave/calendar', icon: CalendarIcon, roles: ['staff', 'hod', 'hr', 'admin'] },
-    { name: 'Pending Approvals', href: '/leave/approval', icon: DocumentTextIcon, roles: ['hod', 'hr', 'admin'] },
+    { name: 'Dashboard', href: '/dashboard', icon: HomeIcon, roles: ['staff', 'hod', 'hr', 'vc', 'bursar', 'admin'] },
+    { name: 'Apply Leave', href: '/leave/apply', icon: DocumentTextIcon, roles: ['staff', 'hod', 'hr', 'vc', 'bursar', 'admin'] },
+    { name: 'Leave History', href: '/leave/history', icon: ClockIcon, roles: ['staff', 'hod', 'hr', 'vc', 'bursar', 'admin'] },
+    { name: 'Leave Calendar', href: '/leave/calendar', icon: CalendarIcon, roles: ['staff', 'hod', 'hr', 'vc', 'bursar', 'admin'] },
+    { name: 'Pending Approvals', href: '/leave/approval', icon: DocumentTextIcon, roles: ['hod', 'hr', 'vc', 'bursar', 'admin'] },
     { name: 'User Management', href: '/admin/users', icon: UserGroupIcon, roles: ['admin'] },
     { name: 'Departments', href: '/admin/departments', icon: UserGroupIcon, roles: ['admin'] },
-    { name: 'Reports', href: '/admin/reports', icon: ChartBarIcon, roles: ['hr', 'admin'] },
-    { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, roles: ['staff', 'hod', 'hr', 'admin'] },
+    { name: 'Reports', href: '/admin/reports', icon: ChartBarIcon, roles: ['hr', 'vc', 'bursar', 'admin'] },
+    { name: 'Settings', href: '/settings', icon: Cog6ToothIcon, roles: ['staff', 'hod', 'hr', 'vc', 'bursar', 'admin'] },
   ];
 
   const filteredNavigation = navigation.filter(item => item.roles.includes(user?.role || 'staff'));

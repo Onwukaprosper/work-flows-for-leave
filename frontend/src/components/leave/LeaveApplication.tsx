@@ -78,6 +78,17 @@ const LeaveApplication: React.FC = () => {
   const endDate = watch('endDate');
   const leaveTypeId = watch('leaveTypeId');
 
+  // Populate form with user profile data when available
+  useEffect(() => {
+    if (user) {
+      setValue('collegeDeptUnit', user.department || '');
+      setValue('presentPost', user.position || '');
+      if ((user as any).salaryScale) setValue('salaryScale', (user as any).salaryScale);
+      if ((user as any).salaryGrade) setValue('salaryGrade', (user as any).salaryGrade);
+      if ((user as any).salaryStep) setValue('salaryStep', (user as any).salaryStep);
+    }
+  }, [user, setValue]);
+
   useEffect(() => {
     loadHolidays();
   }, []);
@@ -239,7 +250,8 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="text"
                 {...register('collegeDeptUnit')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed"
               />
               {errors.collegeDeptUnit && <p className="mt-1 text-sm text-red-600">{errors.collegeDeptUnit.message}</p>}
             </div>
@@ -250,7 +262,8 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="text"
                 {...register('presentPost')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed"
               />
               {errors.presentPost && <p className="mt-1 text-sm text-red-600">{errors.presentPost.message}</p>}
             </div>
@@ -264,7 +277,8 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="text"
                 {...register('salaryScale')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed"
               />
             </div>
             <div>
@@ -274,7 +288,8 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="text"
                 {...register('salaryGrade')}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed"
               />
             </div>
             <div>
@@ -284,7 +299,8 @@ const LeaveApplication: React.FC = () => {
               <input
                 type="number"
                 {...register('salaryStep', { valueAsNumber: true })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
+                readOnly
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500 bg-gray-50 dark:bg-gray-700 dark:text-gray-300 cursor-not-allowed"
               />
             </div>
           </div>

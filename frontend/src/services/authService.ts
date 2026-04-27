@@ -28,18 +28,55 @@ export const authService = {
     else if (lowerEmail.includes('admin')) userRole = 'admin';
     else if (lowerEmail.includes('dean')) userRole = 'dean'; // Just in case
 
+    let department = "Mathematics";
+    let position = "Lecturer II";
+    let salaryScale = "CONUASS";
+    let salaryGrade = "03";
+    let salaryStep = 4;
+
+    switch(userRole) {
+      case 'vc':
+        department = "Vice Chancellor's Office";
+        position = "Vice Chancellor";
+        salaryGrade = "07";
+        salaryStep = 1;
+        break;
+      case 'bursar':
+        department = "Bursary";
+        position = "University Bursar";
+        salaryScale = "CONTISS";
+        salaryGrade = "15";
+        break;
+      case 'hr':
+        department = "Registry";
+        position = "Registrar";
+        salaryScale = "CONTISS";
+        salaryGrade = "14";
+        break;
+      case 'hod':
+        department = "Computer Science";
+        position = "Head of Department";
+        salaryGrade = "06";
+        break;
+      case 'dean':
+        department = "College of Physical Sciences";
+        position = "Dean";
+        salaryGrade = "07";
+        break;
+    }
+
     const mockUser = {
       id: 1,
       staffId: "MOUAU001",
       email: credentials.email,
       firstName: "Test",
       lastName: userRole.toUpperCase(),
-      department: "Computer Science",
-      presentPost: "Senior Lecturer",
-      salaryScale: "CONUASS",
-      salaryGrade: "05",
-      salaryStep: 2,
-      position: "Lecturer",
+      department: department,
+      presentPost: position,
+      salaryScale: salaryScale,
+      salaryGrade: salaryGrade,
+      salaryStep: salaryStep,
+      position: position,
       role: userRole, 
       remainingLeaveDays: 30
     };
